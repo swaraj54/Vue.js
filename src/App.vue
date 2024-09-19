@@ -1,26 +1,55 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <NavbarComponent />
+    <div class="container-fluid">
+      <div class="row">
+        <SidebarComponent />
+        <div class="main-content">
+          <router-view />
+        </div>
+      </div>
+    </div>
+    <FooterComponent />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import VueRouter from 'vue-router';
+import NavbarComponent from './components/NavbarComponent.vue'
+import SidebarComponent from './components/SidebarComponent.vue'
+import FooterComponent from './components/FooterComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NavbarComponent,
+    FooterComponent,
+    SidebarComponent,
   }
 }
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
+  border: 2px solid black;
+  /* Set minimum height to fill the viewport */
+}
+
+
+
+.main-content {
+  height: 1200px;
+  margin-left: 20%;
+  /* Offset for sidebar */
+  padding-top: 70px;
+  /* Space for navbar */
+  height: calc(100vh - 70px - 100px);
+  /* Adjust for navbar and footer height */
 }
 </style>
